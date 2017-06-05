@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".Example1">
         </activity>
+        <activity android:name=".Example2">
+        </activity>
     </application>
 
 </manifest>

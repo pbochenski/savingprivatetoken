@@ -4,22 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.siili.token.MainActivity"
-    android:padding="10dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.siili.token.Example2">
 
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="example 1 - using java-aes-crypto"/>
+        android:text="Encrypt"/>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Example 2 – how to use keystore "/>
+        android:text="Decrypt"/>
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="get key"/>
 </LinearLayout>
