@@ -79,6 +79,7 @@ public class Example2 extends AppCompatActivity {
                 Toast.makeText(this, "SUCCESS", Toast.LENGTH_LONG).show();
 
             } catch (UserNotAuthenticatedException e) {
+                Log.d("DEMO", "user not authenticated");
                 showLockScreen(ENCRYPT_REQ);
             } catch (GeneralSecurityException e) {
                 //todo: remove printstacktrace
