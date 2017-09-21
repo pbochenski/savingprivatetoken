@@ -82,8 +82,6 @@ public class Example2 extends AppCompatActivity {
                 Log.d("DEMO", "user not authenticated");
                 showLockScreen(ENCRYPT_REQ);
             } catch (GeneralSecurityException e) {
-                //todo: remove printstacktrace
-                e.printStackTrace();
                 Toast.makeText(this, "encryption error", Toast.LENGTH_LONG).show();
             }
 
@@ -100,8 +98,6 @@ public class Example2 extends AppCompatActivity {
         } catch (UserNotAuthenticatedException e) {
             showLockScreen(DECRYPT_REQ);
         } catch (GeneralSecurityException e) {
-            //todo: remove printstacktrace
-            e.printStackTrace();
             Toast.makeText(this, "decryption error", Toast.LENGTH_LONG).show();
         }
     }
@@ -130,7 +126,8 @@ public class Example2 extends AppCompatActivity {
             KeyStore keyStore = KeyStore.getInstance("AndroidKeyStore");
             keyStore.load(null);
             KeyStore.Entry entry = keyStore.getEntry("SOME_ALIAS", null);
-            SecretKey key =  key = ((KeyStore.SecretKeyEntry) entry ).getSecretKey();
+            SecretKey key = ((KeyStore.SecretKeyEntry) entry).getSecretKey();
+            Toast.makeText(this, "encoded key = ["+ Arrays.toString(key.getEncoded()) +"]", Toast.LENGTH_SHORT).show();
             Log.d("DEMO", "encoded key = ["+ Arrays.toString(key.getEncoded()) +"]" );
         } catch (KeyStoreException | CertificateException | NoSuchAlgorithmException | IOException | UnrecoverableEntryException e) {
             e.printStackTrace();

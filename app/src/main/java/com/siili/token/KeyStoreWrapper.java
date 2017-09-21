@@ -85,7 +85,7 @@ public class KeyStoreWrapper {
                 .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
                 .setRandomizedEncryptionRequired(true)
                 .setUserAuthenticationRequired(true)
-                .setUserAuthenticationValidityDurationSeconds(5 * 60)
+                .setUserAuthenticationValidityDurationSeconds(5)
                 .build();
         KeyGenerator kg = KeyGenerator.getInstance("AES", ANDROID_KEY_STORE);
         kg.init(keySpec);

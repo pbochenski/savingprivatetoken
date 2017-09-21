@@ -61,6 +61,7 @@ public class Example1 extends AppCompatActivity {
             Log.d("DEMO", "salt= \n" + saltString);
             sharedPreferences.edit().putString("salt", saltString).apply();
             sharedPreferences.edit().putString("ciphered", ciphered.toString()).apply();
+            Toast.makeText(this, "Encryption succeeded", Toast.LENGTH_SHORT).show();
         } catch (GeneralSecurityException | UnsupportedEncodingException e) {
             Toast.makeText(this, "Encryption failed", Toast.LENGTH_LONG).show();
         }
