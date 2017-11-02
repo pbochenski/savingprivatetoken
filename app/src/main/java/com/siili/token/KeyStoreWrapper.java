@@ -12,6 +12,7 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
+import javax.crypto.spec.IvParameterSpec;
 
 import static java.lang.String.format;
 
@@ -47,11 +48,11 @@ public class KeyStoreWrapper {
             SecretKey key = getKey(keyAlias);
             Cipher cipher = Cipher.getInstance(format("%s/%s/%s",
                     KeyProperties.KEY_ALGORITHM_AES,
-                    KeyProperties.BLOCK_MODE_GCM,
-                    KeyProperties.ENCRYPTION_PADDING_NONE));
+                    KeyProperties.BLOCK_MODE_CBC,
+                    KeyProperties.ENCRYPTION_PADDING_PKCS7));
 
             if(iv != null){
-                GCMParameterSpec ivParameterSpec = new GCMParameterSpec(128,iv);
+                IvParameterSpec ivParameterSpec = new IvParameterSpec(iv);
                 cipher.init(cipherMode, key, ivParameterSpec);
             } else  {
                 cipher.init(cipherMode, key);
@@ -81,8 +82,8 @@ public class KeyStoreWrapper {
                 KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT);
         KeyGenParameterSpec keySpec = builder
                 .setKeySize(256)
-                .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+                .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
+                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
                 .setRandomizedEncryptionRequired(true)
                 .setUserAuthenticationRequired(true)
                 .setUserAuthenticationValidityDurationSeconds(5)
